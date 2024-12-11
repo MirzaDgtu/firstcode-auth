@@ -3,7 +3,6 @@ package auth
 import (
 	"context"
 	"errors"
-	"firstcode-auth/internal/grpc/auth"
 
 	ssov1 "github.com/MirzaDgtu/firstcode_protos/gen/go/sso"
 	"google.golang.org/grpc"

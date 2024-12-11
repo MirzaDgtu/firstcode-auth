@@ -6,4 +6,6 @@ type User struct {
 	PassHash  []byte
 	FirstName string
 	Name      string
+	Phone     string
+	Sex       string
 }
