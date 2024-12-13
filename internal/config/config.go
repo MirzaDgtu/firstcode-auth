@@ -23,6 +23,11 @@ type GRPCConfig struct {
 
 func MustLoad() *Config {
 	configPath := fetchConfigPath()
+
+	return MustLoadByPath(configPath)
+}
+
+func MustLoadByPath(configPath string) *Config {
 	if configPath == "" {
 		panic("config path is empty")
 	}
