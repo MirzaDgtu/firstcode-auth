@@ -34,7 +34,7 @@ func main() {
 
 	m, err := migrate.New(
 		"file://"+migrationsPath,
-		"postgres://postres:pmp1226@localhost:5432/firstcode-auth?sslmode=disable")
+		"postgres://pmp:pmp1226@localhost:5432/firstcode_auth?sslmode=disable")
 
 	if err != nil {
 		panic(err)

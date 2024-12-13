@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS users
 (
     id           INTEGER PRIMARY KEY,
     email        TEXT    NOT NULL UNIQUE,
-    pass_hash    BLOB    NOT NULL,
+    pass_hash    BYTEA    NOT NULL,
     first_name   VARCHAR(100) NOT NULL,
     name VARCHAR(40) NOT NULL,
     last_name VARCHAR(130) NULL,
