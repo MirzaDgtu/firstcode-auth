@@ -1,9 +1,12 @@
 package main
 
 import (
+	"firstcode-auth/internal/app"
 	"firstcode-auth/internal/config"
 	"log/slog"
 	"os"
+	"os/signal"
+	"syscall"
 )
 
 const (
@@ -18,8 +21,23 @@ func main() {
 	// TODO: инициализировать логгер
 	log := setupLogger(cfg.Env)
 	// TODO: инициализировать приложение (app)
-
+	application := app.New(log, cfg.GRPC.Port, cfg.StoragePath, cfg.TokenTTL)
 	// TODO: запустить gRPC-сервер приложения
+	go func() {
+		application.GRPCServer.MustRun()
+	}()
+
+	// Graceful shutdown
+
+	stop := make(chan os.Signal, 1)
+	signal.Notify(stop, syscall.SIGTERM, syscall.SIGINT)
+
+	// Waiting for SIGINT (pkill -2) or SIGTERM
+	<-stop
+
+	// initiate graceful shutdown
+	application.GRPCServer.Stop() // Assuming GRPCServer has Stop() method for graceful shutdown
+	log.Info("Gracefully stopped")
 }
 
 func setupLogger(env string) *slog.Logger {
