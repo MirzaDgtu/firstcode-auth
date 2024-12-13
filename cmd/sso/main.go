@@ -16,7 +16,7 @@ func main() {
 	// TODO: инициализировать объект конфига
 	cfg := config.MustLoad()
 	// TODO: инициализировать логгер
-
+	log := setupLogger(cfg.Env)
 	// TODO: инициализировать приложение (app)
 
 	// TODO: запустить gRPC-сервер приложения

@@ -6,6 +6,7 @@ import (
 	"firstcode-auth/internal/domain/models"
 	"firstcode-auth/internal/lib/jwt"
 	"firstcode-auth/internal/lib/logger/sl"
+	"firstcode-auth/internal/storage"
 	"fmt"
 	"log/slog"
 	"time"
